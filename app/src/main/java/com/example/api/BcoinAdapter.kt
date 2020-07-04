@@ -1,9 +1,6 @@
 package com.example.api
 
 import android.app.Activity
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.AsyncTask
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.ahmadrosid.svgloader.SvgLoader
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.squareup.picasso.Picasso
-import java.io.File
-import java.net.HttpURLConnection
-import java.net.URL
 
 class BcoinAdapter(val context: Activity, val list:ArrayList<Bitcoin>) : RecyclerView.Adapter<ViewHolder>(){
 
@@ -39,7 +31,6 @@ class BcoinAdapter(val context: Activity, val list:ArrayList<Bitcoin>) : Recycle
 //            .with(context)
 //            .setPlaceHolder(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
 //            .load(list[position].iconUrl, holder.img)
-//        Glide.with(context).load( File(list[position].iconUrl)).(option).into(holder.img)
         Log.d("showimage",list[position].iconUrl)
     }
 }
