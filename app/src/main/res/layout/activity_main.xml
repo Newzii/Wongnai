@@ -9,11 +9,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical">
 
         <SearchView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:iconifiedByDefault="false"
             android:padding="5dp"
             android:queryHint="@string/search"></SearchView>
@@ -24,12 +26,16 @@
             android:layout_height="3dip"
             android:layout_marginTop="10dp"
             android:background="#CCCCCC" />
-
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/itemsswipetorefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

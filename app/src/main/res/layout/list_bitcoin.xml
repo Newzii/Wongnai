@@ -12,11 +12,30 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/layoutAll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/layoutFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/namediff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|right|center_horizontal|center_vertical"
+                    android:text="TextView"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutSecond"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -32,6 +51,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layoutThird"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -40,7 +60,7 @@
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="34dp"
                     android:text="TextView"
                     android:textStyle="bold" />
 
@@ -48,6 +68,7 @@
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxLines="3"
                     android:text="TextView" />
             </LinearLayout>
 
