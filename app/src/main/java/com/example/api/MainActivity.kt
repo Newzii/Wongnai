@@ -57,11 +57,6 @@ class MainActivity : AppCompatActivity() {
                         id.add(i)
                         Log.d("cI",count.toString())
                     }
-//                    Intent(this, BcoinAdapter::class.java)
-//                    var bundle = Bundle()
-//                    bundle.putSerializable("checkId",id)
-//                     intent.putExtra("id",bundle)
-//                    startActivity(intent)
 
                     recycler_view.setHasFixedSize(true)
                     recycler_view.layoutManager = LinearLayoutManager(this)

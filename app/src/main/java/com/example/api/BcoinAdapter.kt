@@ -1,9 +1,7 @@
 package com.example.api
 
 import android.app.Activity
-import android.content.Intent
-import android.content.Intent.getIntent
-import android.text.Layout
+import android.net.Uri
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -13,15 +11,13 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.guardanis.imageloader.ImageRequest
 
 
 class BcoinAdapter(val context: Activity, val list:ArrayList<Bitcoin>) : RecyclerView.Adapter<ViewHolder>(){
 
-    var intent: Intent? = getIntent(String())
-    var id = ArrayList<Int>()
-    val option = RequestOptions().centerCrop().placeholder(R.drawable.ic_launcher_background).error(android.R.drawable.ic_dialog_alert)
+
+   // val option = RequestOptions().centerCrop().placeholder(R.drawable.ic_launcher_background).error(android.R.drawable.ic_dialog_alert)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -44,25 +40,25 @@ class BcoinAdapter(val context: Activity, val list:ArrayList<Bitcoin>) : Recycle
             holder.tvName.text = list[position].name
             holder.tvNameDiff.text = list[position].name
             holder.img.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-            Glide.with(context).load(list[position].iconUrl).apply(option).into(holder.img)
-            }else{
+           // Glide.with(context).load(list[position].iconUrl).apply(option).into(holder.img)
+            ImageRequest.create(holder.img)
+                .setTargetUrl(Uri.parse(list[position].iconUrl).toString())
+                .setRequiredImageWidth(150)
+                .execute();
+            }else {
             holder.layNameDiff.visibility = View.GONE
             holder.layNameDetail.visibility = View.VISIBLE
             holder.tvName.text = list[position].name
             holder.tvNameDiff.text = list[position].name
             holder.tvDescription.text = list[position].description
             holder.img.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-            Glide.with(context).load(list[position].iconUrl).apply(option).into(holder.img)
-            }
-//       holder.tvName.text = list[position].name
-//        holder.tvDescription.text = list[position].description
-//        holder.img.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-//        Glide.with(context).load(list[position].iconUrl).apply(option).into(holder.img)
+          //  Glide.with(context).load(list[position].iconUrl).apply(option).into(holder.img)
+            ImageRequest.create(holder.img)
+                .setTargetUrl(Uri.parse(list[position].iconUrl).toString())
+                .setRequiredImageWidth(150)
+                .execute();
+        }
 
-//        SvgLoader.pluck()
-//            .with(context)
-//            .setPlaceHolder(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
-//            .load(list[position].iconUrl, holder.img)
         Log.d("showimage",list[position].iconUrl)
     }
 
@@ -75,7 +71,7 @@ class ViewHolder(itemView :View) : RecyclerView.ViewHolder(itemView){
     val tvDescription = itemView.findViewById<TextView>(R.id.description)
     val img = itemView.findViewById<ImageView>(R.id.iconUrl)
     val layNameDiff = itemView.findViewById<LinearLayout>(R.id.layoutFirst)
-    val layImg= itemView.findViewById<LinearLayout>(R.id.layoutSecond)
+    //val layImg= itemView.findViewById<LinearLayout>(R.id.layoutSecond)
     val layNameDetail = itemView.findViewById<LinearLayout>(R.id.layoutThird)
     val layNameAll = itemView.findViewById<LinearLayout>(R.id.layoutAll)
 }
