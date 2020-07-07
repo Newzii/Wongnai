@@ -79,22 +79,22 @@ class BcoinAdapter(val context: Activity, val list: ArrayList<Bitcoin>) :
                     ) {
                         list.add(wp)
                     }
-                    if (wp.symbol!!.toLowerCase(Locale.getDefault())
+                    else if (wp.symbol!!.toLowerCase(Locale.getDefault())
                             .contains(charText)
                     ) {
                         list.add(wp)
                     }
-                    if (wp.slug!!.toLowerCase(Locale.getDefault())
+                    else if (wp.slug!!.toLowerCase(Locale.getDefault())
                             .contains(charText)
                     ) {
                         list.add(wp)
                     }
-                    if (wp.id!!.toString().toLowerCase(Locale.getDefault())
+                    else if (wp.id!!.toString().toLowerCase(Locale.getDefault())
                             .contains(charText)
                     ) {
                         list.add(wp)
                     }
-                    if (wp.uuid!!.toLowerCase(Locale.getDefault())
+                    else if (wp.uuid!!.toLowerCase(Locale.getDefault())
                             .contains(charText)
                     ) {
                         list.add(wp)
