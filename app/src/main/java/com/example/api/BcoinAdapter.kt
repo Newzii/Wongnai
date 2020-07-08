@@ -17,10 +17,15 @@ import kotlin.collections.ArrayList
 class BcoinAdapter(val context: Activity, val list: ArrayList<Bitcoin>) :
     RecyclerView.Adapter<ViewHolder>() {
     var widthInDP: Int = 0
-    private var bitList: ArrayList<Bitcoin>? = null
+    var bitList: ArrayList<Bitcoin>? = null
+
+    init {
+        bitList = ArrayList()
+        bitList!!.addAll(list)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        //find width screen and calculate size for image
+        //Find width screen and calculate size for image
         val dm = DisplayMetrics()
         val windowManager =
             context.getSystemService(WINDOW_SERVICE) as WindowManager
@@ -40,7 +45,6 @@ class BcoinAdapter(val context: Activity, val list: ArrayList<Bitcoin>) :
             holder.layNameDiff.visibility = View.VISIBLE
             holder.layNameDetail.visibility = View.GONE
             holder.layNameAll.gravity = Gravity.RIGHT
-            holder.tvName.text = list[position].name
             holder.tvNameDiff.text = list[position].name
             holder.img.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
             ImageRequest.create(holder.img)
@@ -51,7 +55,6 @@ class BcoinAdapter(val context: Activity, val list: ArrayList<Bitcoin>) :
             holder.layNameDiff.visibility = View.GONE
             holder.layNameDetail.visibility = View.VISIBLE
             holder.tvName.text = list[position].name
-            holder.tvNameDiff.text = list[position].name
             holder.tvDescription.text = list[position].description
             holder.img.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
             ImageRequest.create(holder.img)
@@ -60,7 +63,8 @@ class BcoinAdapter(val context: Activity, val list: ArrayList<Bitcoin>) :
                 .execute()
         }
     }
-    // search filter
+
+    //Search filter
     open fun filter(charText: String): Unit {
 
         var charText = charText
@@ -73,45 +77,34 @@ class BcoinAdapter(val context: Activity, val list: ArrayList<Bitcoin>) :
             }
         } else {
             if (bitList != null) {
-                for (wp in bitList!!) {
-                    if (wp.name!!.toLowerCase(Locale.getDefault())
+                for (data in bitList!!) {
+                    if (data.name!!.toLowerCase(Locale.getDefault())
                             .contains(charText)
                     ) {
-                        list.add(wp)
-                    }
-                    else if (wp.symbol!!.toLowerCase(Locale.getDefault())
+                        list.add(data)
+                    } else if (data.symbol!!.toLowerCase(Locale.getDefault())
                             .contains(charText)
                     ) {
-                        list.add(wp)
-                    }
-                    else if (wp.slug!!.toLowerCase(Locale.getDefault())
+                        list.add(data)
+                    } else if (data.slug!!.toLowerCase(Locale.getDefault())
                             .contains(charText)
                     ) {
-                        list.add(wp)
-                    }
-                    else if (wp.id!!.toString().toLowerCase(Locale.getDefault())
+                        list.add(data)
+                    } else if (data.id!!.toString().toLowerCase(Locale.getDefault())
                             .contains(charText)
                     ) {
-                        list.add(wp)
-                    }
-                    else if (wp.uuid!!.toLowerCase(Locale.getDefault())
+                        list.add(data)
+                    } else if (data.uuid!!.toLowerCase(Locale.getDefault())
                             .contains(charText)
                     ) {
-                        list.add(wp)
+                        list.add(data)
                     }
                 }
             }
         }
         notifyDataSetChanged()
     }
-
-    init {
-        bitList = ArrayList()
-        bitList!!.addAll(list)
-    }
-
 }
-
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tvName = itemView.findViewById<TextView>(R.id.name)

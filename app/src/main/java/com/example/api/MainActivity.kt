@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //** Set the colors of the Pull To Refresh View
+        // Set the colors of the Pull To Refresh View
         itemsswipetorefresh.setProgressBackgroundColorSchemeColor(
             ContextCompat.getColor(
                 this,
@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         callVolley()
     }
 
+    //Call API by volley
     private fun callVolley() {
         val url = "https://api.coinranking.com/v1/public/coins"
         val request = JsonObjectRequest(Request.Method.GET, url, null,
@@ -58,7 +59,18 @@ class MainActivity : AppCompatActivity() {
                         val name = hit.getString("name")
                         val description = hit.getString("description")
                         val iconUrl = hit.getString("iconUrl")
-                        list!!.add(Bitcoin(count, id, uuid, slug, symbol, name, description, iconUrl))
+                        list!!.add(
+                            Bitcoin(
+                                count,
+                                id,
+                                uuid,
+                                slug,
+                                symbol,
+                                name,
+                                description,
+                                iconUrl
+                            )
+                        )
                     }
 
                     recycler_view.setHasFixedSize(true)
@@ -74,6 +86,7 @@ class MainActivity : AppCompatActivity() {
         queue!!.add(request)
     }
 
+    //Search
     fun search() {
         search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(editable: Editable?) {
