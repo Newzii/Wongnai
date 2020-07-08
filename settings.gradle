@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Api"
+rootProject.name = "Wongnai_Assignment"
